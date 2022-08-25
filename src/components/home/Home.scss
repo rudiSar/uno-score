@@ -1,0 +1,42 @@
+@import "src/global_styles/variables";
+
+
+.home {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-size: 96px;
+    line-height: 139px;
+    color: $snow;
+    font-weight: 400;
+
+    &_word-welcome {
+      display: inline-block;
+      animation: wave 1s ease 0s infinite alternate;
+    }
+    &_word-to {
+      display: inline-block;
+      animation: wave 1s ease .5s infinite alternate;
+    }
+    &_word-uno {
+      display: inline-block;
+      animation: wave 1s ease 1s infinite alternate;
+    }
+  }
+
+  &__button {
+    margin-top: 80px;
+  }
+}
+
+@keyframes wave {
+  100% {
+    transform: translateY(-200px);
+  }
+}

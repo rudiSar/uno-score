@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import './global_styles/App.scss';
+import {useState} from "react";
+import Game from "./components/game/Game";
+import Home from "./components/home/Home";
+import {StartContext} from "./context/startContext";
+import {OpenContext} from "./context/openContext";
 
 function App() {
+    const [isStarted, setIsStarted] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <StartContext.Provider value={{isStarted, setIsStarted}}>
+          <OpenContext.Provider value={{isOpen, setIsOpen}}>
+              <div className="app">
+                  <button className='app__button-open'>
+                      <div className='app__button-open_line'/>
+                      <div className='app__button-open_line'/>
+                      <div className='app__button-open_line'/>
+                  </button>
+                  {isStarted
+                      ? <Game />
+                      : <Home />
+                  }
+              </div>
+          </OpenContext.Provider>
+      </StartContext.Provider>
+);
 }
 
 export default App;

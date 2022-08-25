@@ -1,0 +1,55 @@
+@import "./variables.scss";
+
+
+@font-face {
+    font-family: 'Train One';
+    src: url("../fonts/TrainOne-Regular.ttf");
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Train One', cursive;
+}
+body {
+    background-color: $bc;
+}
+.app {
+    &__button-open {
+        position: fixed;
+        top: 40px;
+        left: 40px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+
+        background-color: $darkSteel;
+        border: 3px solid $snow;
+        box-shadow: 0 0 10px $lightSteel;
+
+        transition: .125s;
+        &_line {
+            width: 34px;
+            height: 3px;
+            margin: 3.5px;
+
+            background-color: $snow;
+        }
+
+        &:hover {
+            background-color: $snow;
+            border: 3px solid $darkSteel;
+            .app__button-open_line {
+                background-color: $darkSteel;
+            }
+        }
+        &:active {
+            transform: scale(.95);
+        }
+    }
+}
