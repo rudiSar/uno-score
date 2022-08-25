@@ -1,0 +1,27 @@
+@import "src/global_styles/variables";
+
+
+.custom-button {
+  width: 335px;
+  background-color: $darkSteel;
+  border-radius: 25px;
+  border: 3px solid $snow;
+  box-shadow: 0 0 10px $lightSteel;
+
+  font-size: 35px;
+  font-weight: 400;
+  color: $snow;
+  font-family: inherit;
+  text-align: center;
+
+  transition: .125s;
+
+  &:hover {
+    background-color: $snow;
+    color: $darkSteel;
+    border-color: $darkSteel;
+  }
+  &:active {
+    transform: scale(.99);
+  }
+}
