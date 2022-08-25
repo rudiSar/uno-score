@@ -6,7 +6,7 @@
   background-color: $darkSteel;
   border-radius: 25px;
   border: 3px solid $snow;
-  box-shadow: 0 0 10px $lightSteel;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .2);
 
   font-size: 35px;
   font-weight: 400;
@@ -16,6 +16,7 @@
 
   transition: .125s;
   cursor: pointer;
+  outline: none;
 
   &:hover {
     background-color: $snow;

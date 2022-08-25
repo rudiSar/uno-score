@@ -31,7 +31,7 @@ body {
 
         background-color: $darkSteel;
         border: 3px solid $snow;
-        box-shadow: 0 0 10px $lightSteel;
+        box-shadow: 0 0 15px rgba(0, 0, 0, .2);
 
         transition: .125s;
         &_line {

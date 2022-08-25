@@ -1,5 +1,11 @@
 @import "./src/global_styles/variables";
 
+@mixin settingsText ($color: $darkSteel) {
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 51px;
+  color: $color;
+}
 .setting {
   position: fixed;
   z-index: 1000;
@@ -13,6 +19,8 @@
   opacity: 1;
   transition: .2s;
 
+  text-align: center;
+
   &_hide {
     opacity: 0;
     visibility: hidden;
@@ -20,11 +28,34 @@
   &__block {
     width: 400px;
     height: 100%;
+    padding: 15px 0;
+    overflow-y: auto;
 
     background-color: $snow;
+    box-shadow: 0 0 26px 2px rgba(0, 0, 0, .4);
     transition: .3s;
     &_hide {
       transform: translateX(-450px);
     }
+  }
+
+  &__title {
+    margin: 25px 0;
+    @include settingsText();
+  }
+  &__text {
+    margin-bottom: 15px;
+    @include settingsText();
+  }
+  &__separator {
+    width: 300px;
+    margin: 0 auto;
+
+    border: none;
+    border-bottom: 1px dashed $darkSteel;
+  }
+  &__list {
+    list-style-type: none;
+    margin-bottom: 30px;
   }
 }
