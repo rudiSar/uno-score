@@ -1,0 +1,30 @@
+@import "./src/global_styles/variables";
+
+.setting {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, .5);
+  opacity: 1;
+  transition: .2s;
+
+  &_hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+  &__block {
+    width: 400px;
+    height: 100%;
+
+    background-color: $snow;
+    transition: .3s;
+    &_hide {
+      transform: translateX(-450px);
+    }
+  }
+}

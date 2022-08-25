@@ -17,6 +17,7 @@ body {
 .app {
     &__button-open {
         position: fixed;
+        z-index: 500;
         top: 40px;
         left: 40px;
 

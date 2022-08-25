@@ -5,7 +5,7 @@ import {OpenContext} from "../../context/openContext";
 
 
 const Home = () => {
-    const {isOpen, setIsSOpen} = useContext(OpenContext)
+    const {isOpen, setIsOpen} = useContext(OpenContext)
 
     return (
         <main className='home'>
@@ -16,7 +16,7 @@ const Home = () => {
             </h1>
             <CustomButton
                 additionalClass='home__button'
-                onClick={() => setIsSOpen(true)}
+                onClick={() => setIsOpen(true)}
             >Let's play!</CustomButton>
         </main>
     );
