@@ -1,10 +1,19 @@
 import React from 'react';
+import './Game.scss';
+import CustomButton from "../UI/button/CustomButton";
+import PlayerCard from "../player_card/PlayerCard";
 
-const Game = () => {
+
+const Game = ({names, setNames}) => {
+
     return (
-        <div>
-            Game page
-        </div>
+        <main className='game'>
+            <h1 className='game__title'>Welcome to UNO!</h1>
+            {names.map((item, index) =>
+                <PlayerCard />
+            )}
+            <CustomButton additionalClass='game__button-lap'>lap</CustomButton>
+        </main>
     );
 };
 

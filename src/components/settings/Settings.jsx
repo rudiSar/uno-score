@@ -7,14 +7,13 @@ import CustomButton from "../UI/button/CustomButton";
 import {StartContext} from "../../context/startContext";
 
 
-const Settings = () => {
+const Settings = ({names, setNames}) => {
     const {isOpen, setIsOpen} = useContext(OpenContext)
     const {isStarted, setIsStarted} = useContext(StartContext)
 
     const [scoreToWin, setScoreToWin] = useState(500)
     const [countOfPlayers, setCountOfPlayers] = useState(2)
 
-    const [names, setNames] = useState([])
 
     function nameChangeHandler(index, event) {
         setNames([...names.slice(0, index), event.target.value, ...names.slice(index + 1)]);

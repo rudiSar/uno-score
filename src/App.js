@@ -7,11 +7,13 @@ import {OpenContext} from "./context/openContext";
 import Settings from "./components/settings/Settings";
 
 function App() {
+    const [names, setNames] = useState([])
     const [isStarted, setIsStarted] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
 
-  return (
+
+    return (
       <StartContext.Provider value={{isStarted, setIsStarted}}>
           <OpenContext.Provider value={{isOpen, setIsOpen}}>
               <div className="app">
@@ -20,9 +22,9 @@ function App() {
                       <div className='app__button-open_line'/>
                       <div className='app__button-open_line'/>
                       </button>
-                  <Settings />
+                  <Settings names={names} setNames={setNames}/>
                   {isStarted
-                      ? <Game />
+                      ? <Game names={names} setNames={setNames}/>
                       : <Home />
                   }
               </div>

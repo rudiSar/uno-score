@@ -1,0 +1,17 @@
+@import "./src/global_styles/variables";
+
+.game {
+  width: 100%;
+
+  padding: 25px 0;
+  text-align: center;
+  &__title {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 58px;
+    color: $snow;
+  }
+  &__button-lap {
+    margin-top: 85px;
+  }
+}
