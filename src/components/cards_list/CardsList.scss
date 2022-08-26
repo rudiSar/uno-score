@@ -1,0 +1,9 @@
+@import "./src/global_styles/variables";
+
+
+.card-list {
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}

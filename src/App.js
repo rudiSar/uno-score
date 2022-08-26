@@ -1,5 +1,5 @@
 import './global_styles/App.scss';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Game from "./components/game/Game";
 import Home from "./components/home/Home";
 import {StartContext} from "./context/startContext";
@@ -10,7 +10,6 @@ function App() {
     const [names, setNames] = useState([])
     const [isStarted, setIsStarted] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
-
 
 
     return (
