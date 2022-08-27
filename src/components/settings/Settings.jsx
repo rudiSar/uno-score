@@ -15,7 +15,23 @@ const Settings = ({names, setNames}) => {
     const [countOfPlayers, setCountOfPlayers] = useState(2)
 
 
-    function nameChangeHandler(index, event) {
+    useEffect(() => {
+        fillNames()
+    }, [countOfPlayers])
+
+    const fillNames = () => {
+        const newNames = []
+        names.forEach((item, index) => {
+            if (item === '') {
+                newNames.push(`Player ${index + 1}`)
+            } else {
+                newNames.push(item)
+            }
+        })
+        setNames(newNames)
+    }
+
+    const nameChangeHandler = (index, event) => {
         setNames([...names.slice(0, index), event.target.value, ...names.slice(index + 1)]);
     }
 
@@ -77,6 +93,7 @@ const Settings = ({names, setNames}) => {
                 <CustomButton onClick={() => {
                     setIsOpen(false)
                     setIsStarted(true)
+                    fillNames()
                 }}>GO!</CustomButton>
             </aside>
         </div>

@@ -11,6 +11,13 @@
     line-height: 58px;
     color: $snow;
   }
+  &__text {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 35px;
+    color: $darkSteel;
+    user-select: none;
+  }
   &__button-lap {
     margin-top: 85px;
   }
