@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import './CustomInputNumber.scss';
 
 
-const CustomInputNumber = ({placeholder, min = 1, max = 100, ...props}) => {
+const CustomInputNumber = ({placeholder, min, max, value, setValue}) => {
+    useLayoutEffect(() => {
+        if (value > max) {
+            setValue(max)
+        }
+    }, [value])
+
     return (
         <input
             className='custom-input'
@@ -10,9 +16,8 @@ const CustomInputNumber = ({placeholder, min = 1, max = 100, ...props}) => {
             min={min}
             max={max}
             placeholder={placeholder}
-            // value={value}
-            // onChange={event => setValue(event.target.value)}
-            {...props}
+            value={value}
+            onChange={event => setValue(event.target.value)}
         />
     );
 };

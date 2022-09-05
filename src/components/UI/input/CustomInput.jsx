@@ -8,8 +8,6 @@ const CustomInput = ({placeholder, ...props}) => {
             className='custom-input'
             type="text"
             placeholder={placeholder}
-            // value={value}
-            // onChange={event => setValue(event.target.value)}
             {...props}
         />
     );

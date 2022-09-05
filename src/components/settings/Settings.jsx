@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useMemo, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import './Settings.scss';
 import {OpenContext} from "../../context/openContext";
 import CustomRange from "../UI/range/CustomRange";
@@ -7,11 +7,9 @@ import CustomButton from "../UI/button/CustomButton";
 import {StartContext} from "../../context/startContext";
 
 
-const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin}) => {
+const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin, countOfPlayers, setCountOfPlayers}) => {
     const {isOpen, setIsOpen} = useContext(OpenContext)
     const {isStarted, setIsStarted} = useContext(StartContext)
-
-    const [countOfPlayers, setCountOfPlayers] = useState(2)
 
 
     const newGame = () => {

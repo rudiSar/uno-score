@@ -11,6 +11,8 @@ function App() {
     const [isOpen, setIsOpen] = useState(false)
     const [scores, setScores] = useState(Array(2).fill([0]))
     const [scoreToWin, setScoreToWin] = useState(500)
+    const [countOfPlayers, setCountOfPlayers] = useState(2)
+
 
 
     useEffect(() => {
@@ -34,6 +36,8 @@ function App() {
                       setScores={setScores}
                       scoreToWin={scoreToWin}
                       setScoreToWin={setScoreToWin}
+                      countOfPlayers={countOfPlayers}
+                      setCountOfPlayers={setCountOfPlayers}
                   />
                   {isStarted
                       ? <Game
@@ -42,6 +46,7 @@ function App() {
                           scores={scores}
                           setScores={setScores}
                           scoreToWin={scoreToWin}
+                          setCountOfPlayers={setCountOfPlayers}
                       />
                       : <Home />
                   }
