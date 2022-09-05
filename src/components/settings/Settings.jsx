@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useMemo, useState} from 'react';
 import './Settings.scss';
 import {OpenContext} from "../../context/openContext";
 import CustomRange from "../UI/range/CustomRange";
@@ -7,17 +7,23 @@ import CustomButton from "../UI/button/CustomButton";
 import {StartContext} from "../../context/startContext";
 
 
-const Settings = ({names, setNames}) => {
+const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin}) => {
     const {isOpen, setIsOpen} = useContext(OpenContext)
     const {isStarted, setIsStarted} = useContext(StartContext)
 
-    const [scoreToWin, setScoreToWin] = useState(500)
     const [countOfPlayers, setCountOfPlayers] = useState(2)
 
 
-    useEffect(() => {
+    const newGame = () => {
+        setScores(Array(names.length).fill([0]))
+        setIsOpen(false)
+        setIsStarted(true)
         fillNames()
-    }, [countOfPlayers])
+    }
+    const closeSettingsTab = () => {
+        setIsOpen(false)
+        fillNames()
+    }
 
     const fillNames = () => {
         const newNames = []
@@ -28,6 +34,7 @@ const Settings = ({names, setNames}) => {
                 newNames.push(item)
             }
         })
+
         setNames(newNames)
     }
 
@@ -44,16 +51,34 @@ const Settings = ({names, setNames}) => {
         : 'setting setting_hide'
 
     useEffect(() => {
-        const newName = []
+        const newNames = []
         for (let i = 0; i < countOfPlayers; i++) {
             names[i]
-                ? newName.push(names[i])
-                : newName.push('')
+                ? newNames.push(names[i])
+                : newNames.push('')
         }
-        setNames(newName)
+        setNames(newNames)
     }, [countOfPlayers])
+
+
+    useEffect(() => {
+        const updateScores = []
+
+        for (let i = 0; i < names.length; i++) {
+            updateScores.push([])
+            for (let j = 0; j < scores[0].length; j++) {
+                if (scores[i]) {
+                    updateScores[i].push(scores[i][j])
+                } else {
+                    updateScores[i].push(0)
+                }
+            }
+        }
+
+        setScores(updateScores)
+    }, [countOfPlayers, names])
     return (
-        <div className={containerClass} onClick={() => setIsOpen(false)}>
+        <div className={containerClass} onClick={closeSettingsTab}>
             <aside className={blockClass} onClick={event => event.stopPropagation()}>
                 <h2 className='setting__title'>Score to win:</h2>
                 <CustomRange
@@ -90,11 +115,7 @@ const Settings = ({names, setNames}) => {
                 <hr className='setting__separator'/>
 
                 <h2 className='setting__title'>Start Game</h2>
-                <CustomButton onClick={() => {
-                    setIsOpen(false)
-                    setIsStarted(true)
-                    fillNames()
-                }}>GO!</CustomButton>
+                <CustomButton onClick={newGame}>New Game</CustomButton>
             </aside>
         </div>
 

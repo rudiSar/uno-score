@@ -3,12 +3,12 @@ import './CardsList.scss';
 import PlayerCard from "../player_card/PlayerCard";
 
 
-const CardsList = ({names, setNames, scores, setScores}) => {
+const CardsList = ({names, scores}) => {
     return (
         <ul className='card-list'>
-            {names.map((item, index) =>
+            {scores.map((item, index) =>
                 <li key={index} className='card-item'>
-                    <PlayerCard name={item} score={scores[index]} playerIndex={index}/>
+                    <PlayerCard name={names[index]} score={item} playerIndex={index}/>
                 </li>
             )}
         </ul>

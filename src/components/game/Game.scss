@@ -17,6 +17,10 @@
     line-height: 35px;
     color: $darkSteel;
     user-select: none;
+
+    &_win {
+      margin-bottom: 40px;
+    }
   }
   &__button-lap {
     margin-top: 85px;

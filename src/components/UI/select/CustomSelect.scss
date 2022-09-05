@@ -1,2 +1,26 @@
 @import "./src/global_styles/variables";
 
+.custom-select {
+  width: 235px;
+  height: 23px;
+  margin: 20px auto;
+
+  background-color: transparent;
+  border: 1px solid $darkSteel;
+  border-radius: 12px;
+  outline: none;
+
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: $darkSteel;
+
+  transition: .125s;
+
+  &:hover {
+    background-color: $darkSteel;
+    color: $snow;
+  }
+
+}

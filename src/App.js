@@ -1,15 +1,21 @@
 import './global_styles/App.scss';
-import {useEffect, useState} from "react";
+import {useEffect, useLayoutEffect, useState} from "react";
 import Game from "./components/game/Game";
 import Home from "./components/home/Home";
 import {StartContext} from "./context/startContext";
 import {OpenContext} from "./context/openContext";
 import Settings from "./components/settings/Settings";
-
 function App() {
     const [names, setNames] = useState([])
     const [isStarted, setIsStarted] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+    const [scores, setScores] = useState(Array(2).fill([0]))
+    const [scoreToWin, setScoreToWin] = useState(500)
+
+
+    useEffect(() => {
+        setScores(Array(2).fill([0]))
+    },[])
 
 
     return (
@@ -20,10 +26,23 @@ function App() {
                       <div className='app__button-open_line'/>
                       <div className='app__button-open_line'/>
                       <div className='app__button-open_line'/>
-                      </button>
-                  <Settings names={names} setNames={setNames}/>
+                  </button>
+                  <Settings
+                      names={names}
+                      setNames={setNames}
+                      scores={scores}
+                      setScores={setScores}
+                      scoreToWin={scoreToWin}
+                      setScoreToWin={setScoreToWin}
+                  />
                   {isStarted
-                      ? <Game names={names} setNames={setNames}/>
+                      ? <Game
+                          names={names}
+                          setNames={setNames}
+                          scores={scores}
+                          setScores={setScores}
+                          scoreToWin={scoreToWin}
+                      />
                       : <Home />
                   }
               </div>

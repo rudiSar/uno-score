@@ -17,7 +17,7 @@ const Home = () => {
             <CustomButton
                 additionalClass='home__button'
                 onClick={() => setIsOpen(true)}
-            >Let's play!</CustomButton>
+                >Let's play!</CustomButton>
         </main>
     );
 };
