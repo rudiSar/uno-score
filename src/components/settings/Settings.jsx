@@ -13,14 +13,8 @@ const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin
 
 
     const newGame = () => {
-        setScores(Array(names.length).fill([0]))
         setIsOpen(false)
         setIsStarted(true)
-        fillNames()
-    }
-    const closeSettingsTab = () => {
-        setIsOpen(false)
-        fillNames()
     }
 
     const fillNames = () => {
@@ -35,6 +29,9 @@ const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin
 
         setNames(newNames)
     }
+    useEffect(() => {
+        fillNames()
+    }, [])
 
     const nameChangeHandler = (index, event) => {
         setNames([...names.slice(0, index), event.target.value, ...names.slice(index + 1)]);
@@ -76,7 +73,7 @@ const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin
         setScores(updateScores)
     }, [countOfPlayers, names])
     return (
-        <div className={containerClass} onClick={closeSettingsTab}>
+        <div className={containerClass} onClick={() => setIsOpen(false)}>
             <aside className={blockClass} onClick={event => event.stopPropagation()}>
                 <h2 className='setting__title'>Score to win:</h2>
                 <CustomRange
@@ -102,7 +99,6 @@ const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin
                         <li key={index} className='setting__list-item'>
                             <CustomInput
                                 placeholder='name'
-                                key={index}
                                 value={item.value}
                                 onChange={event => nameChangeHandler(index, event)}
                             />

@@ -48,7 +48,7 @@ function App() {
                           scoreToWin={scoreToWin}
                           setCountOfPlayers={setCountOfPlayers}
                       />
-                      : <Home />
+                      : <Home/>
                   }
               </div>
           </OpenContext.Provider>

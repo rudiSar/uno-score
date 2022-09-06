@@ -54,16 +54,16 @@ const Game = ({names, setNames, scores, setScores, scoreToWin, setCountOfPlayers
 
     const newGame = () => {
         setIsStarted(false)
-        setNames(['', ''])
         setScores(Array(2).fill([0]))
-        setIsOpen(true)
         setRound(0)
         setWinner('')
         setLapWinnerScore(1)
         setLapWinner(names[0])
         setIsWinPopupActive(false)
         setCountOfPlayers(2)
+        // setNames(['Player 1', 'Player 2'])
     }
+
     return (
         <main className='game'>
             <h1 className='game__title'>Welcome to UNO!</h1>
