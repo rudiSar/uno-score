@@ -6,7 +6,6 @@ import CustomPopup from "../UI/popup/CustomPopup";
 import CustomSelect from "../UI/select/CustomSelect";
 import CustomInputNumber from "../UI/input_number/CustomInputNumber";
 import {StartContext} from "../../context/startContext";
-import {OpenContext} from "../../context/openContext";
 
 
 const Game = ({names, setNames, scores, setScores, scoreToWin, setCountOfPlayers}) => {
@@ -20,14 +19,8 @@ const Game = ({names, setNames, scores, setScores, scoreToWin, setCountOfPlayers
     const [winner, setWinner] = useState('')
 
     const {isStarted, setIsStarted} = useContext(StartContext)
-    const {isOpen, setIsOpen} = useContext(OpenContext)
 
-
-    useEffect(() => {
-        setLapWinner(names[0])
-    }, [names])
-
-    useEffect(() => {
+    useEffect(() => { // check winner score
         scores.forEach((item, index) => {
             if (item.reduce((acc, num) => acc + num, 0) >= scoreToWin) {
                 setWinner(names[index])
@@ -61,7 +54,6 @@ const Game = ({names, setNames, scores, setScores, scoreToWin, setCountOfPlayers
         setLapWinner(names[0])
         setIsWinPopupActive(false)
         setCountOfPlayers(2)
-        // setNames(['Player 1', 'Player 2'])
     }
 
     return (
@@ -72,23 +64,25 @@ const Game = ({names, setNames, scores, setScores, scoreToWin, setCountOfPlayers
                 additionalClass='game__button-lap'
                 onClick={() => setIsLapPopupActive(true)}
             >lap</CustomButton>
+
             {isLapPopupActive &&
-            <CustomPopup isPopupActive={isLapPopupActive} setIsPopupActive={setIsLapPopupActive}>
-                <h2 className='game__text'>Winner:</h2>
-                <CustomSelect
-                    options={names}
-                    value={lapWinner}
-                    onChange={newWinner => setLapWinner(newWinner)}
-                />
-                <h2 className='game__text'>Score:</h2>
-                <CustomInputNumber
-                    value={lapWinnerScore}
-                    setValue={setLapWinnerScore}
-                    min={1} max={1210}
-                    placeholder='score...'
-                />
-                <CustomButton onClick={newLap}>apply</CustomButton>
-            </CustomPopup>}
+                <CustomPopup isPopupActive={isLapPopupActive} setIsPopupActive={setIsLapPopupActive}>
+                    <h2 className='game__text'>Winner:</h2>
+                    <CustomSelect
+                        options={names}
+                        value={lapWinner}
+                        onChange={newWinner => setLapWinner(newWinner)}
+                    />
+                    <h2 className='game__text'>Score:</h2>
+                    <CustomInputNumber
+                        value={lapWinnerScore}
+                        setValue={setLapWinnerScore}
+                        min={1} max={1210}
+                        placeholder='score...'
+                    />
+                    <CustomButton onClick={newLap}>Apply</CustomButton>
+                </CustomPopup>
+            }
 
             {isWinPopupActive &&
                 <CustomPopup isPopupActive={isWinPopupActive} setIsPopupActive={setIsWinPopupActive}>

@@ -1,18 +1,15 @@
 @import "./variables.scss";
-@import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap');
 
 
 @font-face {
-    font-family: 'Train One';
-    src: url("../fonts/TrainOne-Regular.ttf");
+    font-family: 'Kelly Slab';
+    src: url("../fonts/KellySlab-Regular.ttf");
 }
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    //font-family: 'Train One', cursive;
     font-family: 'Kelly Slab', cursive;
-
 }
 body {
     background-color: $bc;

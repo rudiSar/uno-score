@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import CustomButton from "../UI/button/CustomButton";
 import './Home.scss';
+import CustomButton from "../UI/button/CustomButton";
 import {OpenContext} from "../../context/openContext";
 
 
@@ -17,7 +17,7 @@ const Home = () => {
             <CustomButton
                 additionalClass='home__button'
                 onClick={() => setIsOpen(true)}
-                >Let's play!</CustomButton>
+            >Let's play!</CustomButton>
         </main>
     );
 };

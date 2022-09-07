@@ -39,15 +39,16 @@ function App() {
                       countOfPlayers={countOfPlayers}
                       setCountOfPlayers={setCountOfPlayers}
                   />
-                  {isStarted ? <Game
-                                  names={names}
-                                  setNames={setNames}
-                                  scores={scores}
-                                  setScores={setScores}
-                                  scoreToWin={scoreToWin}
-                                  setCountOfPlayers={setCountOfPlayers}
-                                />
-                                : <Home/>
+                  {isStarted
+                      ? <Game
+                          names={names}
+                          setNames={setNames}
+                          scores={scores}
+                          setScores={setScores}
+                          scoreToWin={scoreToWin}
+                          setCountOfPlayers={setCountOfPlayers}
+                        />
+                    : <Home/>
                   }
               </div>
           </OpenContext.Provider>
