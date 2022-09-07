@@ -21,6 +21,12 @@
 
   text-align: center;
 
+  &__score-container {
+    width: 235px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+  }
   &_hide {
     opacity: 0;
     visibility: hidden;

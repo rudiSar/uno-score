@@ -5,6 +5,7 @@ import CustomRange from "../UI/range/CustomRange";
 import CustomInput from "../UI/input/CustomInput";
 import CustomButton from "../UI/button/CustomButton";
 import {StartContext} from "../../context/startContext";
+import CustomButtonCircle from "../UI/button/CustomButtonCircle";
 
 
 const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin, countOfPlayers, setCountOfPlayers}) => {
@@ -73,6 +74,7 @@ const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin
 
         setScores(updateScores)
     }, [countOfPlayers, names])
+
     return (
         <div className={containerClass} onClick={newGame}>
             <aside className={blockClass} onClick={event => event.stopPropagation()}>
@@ -82,7 +84,11 @@ const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin
                     value={scoreToWin}
                     setValue={setScoreToWin}
                 />
-                <p className='setting__text'>{scoreToWin}</p>
+                <div className="setting__score-container">
+                    <CustomButtonCircle onClick={() => setScoreToWin(scoreToWin - 1)}>-</CustomButtonCircle>
+                    <p className='setting__text'>{scoreToWin}</p>
+                    <CustomButtonCircle onClick={() => setScoreToWin(scoreToWin + 1)}>+</CustomButtonCircle>
+                </div>
                 <hr className='setting__separator'/>
 
                 <h2 className='setting__title'>Players:</h2>

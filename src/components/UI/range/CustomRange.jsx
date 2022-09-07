@@ -8,7 +8,7 @@ const CustomRange = ({value, setValue, range}) => {
             className='custom-range'
             type="range"
             value={value}
-            onChange={event => setValue(event.target.value)}
+            onChange={event => setValue(Number(event.target.value))}
             min={range.min} max={range.max}
         />
     );
