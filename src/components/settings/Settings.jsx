@@ -15,6 +15,7 @@ const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin
     const newGame = () => {
         setIsOpen(false)
         setIsStarted(true)
+        fillNames()
     }
 
     const fillNames = () => {
@@ -73,7 +74,7 @@ const Settings = ({names, setNames, scores, setScores, scoreToWin, setScoreToWin
         setScores(updateScores)
     }, [countOfPlayers, names])
     return (
-        <div className={containerClass} onClick={() => setIsOpen(false)}>
+        <div className={containerClass} onClick={newGame}>
             <aside className={blockClass} onClick={event => event.stopPropagation()}>
                 <h2 className='setting__title'>Score to win:</h2>
                 <CustomRange

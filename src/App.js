@@ -1,24 +1,24 @@
 import './global_styles/App.scss';
-import {useEffect, useLayoutEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Game from "./components/game/Game";
 import Home from "./components/home/Home";
 import {StartContext} from "./context/startContext";
 import {OpenContext} from "./context/openContext";
 import Settings from "./components/settings/Settings";
+
 function App() {
     const [names, setNames] = useState([])
+    const [scores, setScores] = useState(Array(2).fill([0]))
+
     const [isStarted, setIsStarted] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
-    const [scores, setScores] = useState(Array(2).fill([0]))
+
     const [scoreToWin, setScoreToWin] = useState(500)
     const [countOfPlayers, setCountOfPlayers] = useState(2)
 
-
-
-    useEffect(() => {
+    useEffect(() => { // first initialization
         setScores(Array(2).fill([0]))
     },[])
-
 
     return (
       <StartContext.Provider value={{isStarted, setIsStarted}}>
@@ -39,16 +39,15 @@ function App() {
                       countOfPlayers={countOfPlayers}
                       setCountOfPlayers={setCountOfPlayers}
                   />
-                  {isStarted
-                      ? <Game
-                          names={names}
-                          setNames={setNames}
-                          scores={scores}
-                          setScores={setScores}
-                          scoreToWin={scoreToWin}
-                          setCountOfPlayers={setCountOfPlayers}
-                      />
-                      : <Home/>
+                  {isStarted ? <Game
+                                  names={names}
+                                  setNames={setNames}
+                                  scores={scores}
+                                  setScores={setScores}
+                                  scoreToWin={scoreToWin}
+                                  setCountOfPlayers={setCountOfPlayers}
+                                />
+                                : <Home/>
                   }
               </div>
           </OpenContext.Provider>
